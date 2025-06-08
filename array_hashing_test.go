@@ -22,3 +22,22 @@ func TestGroupAnagrams(t *testing.T) {
 		}
 	}
 }
+
+func TestTopKFrequentElements(t *testing.T) {
+	tests := []struct {
+		input    []int
+		k        int
+		expected []int
+	}{{
+		input:    []int{1, 2, 2, 3, 3, 3},
+		k:        2,
+		expected: []int{3, 2},
+	}}
+
+	for _, test := range tests {
+		got := topKFrequentElements(test.input, test.k)
+		if !reflect.DeepEqual(test.expected, got) {
+			t.Errorf("Expected %v, Got %v", test.expected, got)
+		}
+	}
+}
