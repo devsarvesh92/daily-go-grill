@@ -62,3 +62,24 @@ func sortDict(dt map[int]int, descending bool) (pairs []KeyValue) {
 
 	return
 }
+
+func producofArrayExceptSelf(nums []int) (result []int) {
+	suffixProduct := make([]int, len(nums))
+
+	seed := 1
+	for id, num := range nums {
+		suffixProduct[id] = seed
+		seed *= num
+	}
+
+	start := len(nums) - 1
+	seed = 1
+	for start >= 0 {
+		suffixProduct[start] = suffixProduct[start] * seed
+		seed = nums[start] * seed
+		start = start - 1
+	}
+
+	result = append(result, suffixProduct...)
+	return
+}

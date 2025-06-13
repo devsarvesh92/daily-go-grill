@@ -41,3 +41,21 @@ func TestTopKFrequentElements(t *testing.T) {
 		}
 	}
 }
+
+func TestArrayHashing(t *testing.T) {
+	tests := []struct {
+		input    []int
+		expected []int
+	}{{
+		input:    []int{1, 2, 4, 6},
+		expected: []int{48, 24, 12, 8},
+	}}
+
+	for _, test := range tests {
+		got := producofArrayExceptSelf(test.input)
+
+		if !reflect.DeepEqual(got, test.expected) {
+			t.Errorf("Expected %v Got %v", test.expected, got)
+		}
+	}
+}
