@@ -59,3 +59,20 @@ func TestArrayHashing(t *testing.T) {
 		}
 	}
 }
+
+func TestLongestConsecutiveSequence(t *testing.T) {
+	tests := []struct {
+		nums     []int
+		expected int
+	}{{
+		nums:     []int{2, 20, 4, 10, 3, 4, 5},
+		expected: 4,
+	}}
+
+	for _, test := range tests {
+		actual := longestConsecutiveSequence(test.nums)
+		if !reflect.DeepEqual(test.expected, actual) {
+			t.Errorf("Expected %d Actual %d", test.expected, actual)
+		}
+	}
+}

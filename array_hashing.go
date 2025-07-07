@@ -83,3 +83,31 @@ func producofArrayExceptSelf(nums []int) (result []int) {
 	result = append(result, suffixProduct...)
 	return
 }
+
+func longestConsecutiveSequence(nums []int) int {
+	hs := make(map[int]int)
+	longest := 0
+
+	for _, num := range nums {
+		hs[num] = num
+	}
+
+	for _, num := range nums {
+		_, ok := hs[num-1]
+		if !ok {
+			length := 1
+			for {
+				nxt := num + length
+				_, ok := hs[nxt]
+				if ok {
+					length += 1
+				} else {
+					break
+				}
+			}
+
+			longest = max(longest, length)
+		}
+	}
+	return longest
+}
