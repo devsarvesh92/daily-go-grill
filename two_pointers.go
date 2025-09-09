@@ -25,3 +25,22 @@ func validPalindrome(s string) bool {
 	}
 	return true
 }
+
+func containerWithMostWater(heights []int) int {
+	i := 0
+	j := len(heights) - 1
+	maxArea := 0
+	for i < j {
+		height := min(heights[i], heights[j])
+		width := j - i
+		area := width * height
+		maxArea = max(area, maxArea)
+
+		if heights[i] < heights[j] {
+			i += 1
+		} else {
+			j -= 1
+		}
+	}
+	return maxArea
+}
